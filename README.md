@@ -1,21 +1,26 @@
 # 🚰 JalRakshak – Automated Pipeline Inspection Rover
 
-JalRakshak is a ROS 2 and Gazebo-based automated pipeline inspection rover simulation designed to detect water leakages inside underground pipeline environments.
+JalRakshak is a ROS 2 and Gazebo-based automated pipeline inspection rover simulation designed to detect simulated water leakages inside underground pipeline environments.
 
-The system uses a rover-mounted camera, OpenCV-based vision processing, odometry, and autonomous movement to identify simulated water leaks and estimate their locations.
+The system combines a four-wheel differential-drive rover, onboard camera, OpenCV-based vision processing, odometry tracking, and autonomous movement to identify and locate simulated water leaks.
 
 ---
 
 ## 🎯 Project Objective
 
-The main objective of JalRakshak is to develop a robotic system that can:
+The main objective of JalRakshak is to develop a robotic pipeline inspection system that can:
 
 - Inspect underground water pipelines
-- Detect water leakage automatically
-- Identify the approximate leak location
-- Stop the rover for leak inspection
-- Continue the inspection after detecting a leak
-- Reduce water wastage and manual inspection effort
+- Detect simulated water leakage automatically
+- Estimate the approximate leak location
+- Stop the rover when a leak is detected
+- Perform a short inspection
+- Continue the inspection after the leak
+- Track the rover's travelled distance
+- Calculate leak position error
+- Complete inspection of multiple leak points
+
+The long-term goal is to reduce manual inspection effort, inspection time, and water wastage.
 
 ---
 
@@ -30,93 +35,65 @@ The main objective of JalRakshak is to develop a robotic system that can:
 - URDF
 - Differential Drive
 - Odometry
+- Linux / Ubuntu
 
 ---
 
 ## 🤖 Rover Features
 
 - 4-wheel rover configuration
-- Differential drive movement
-- Onboard camera
+- Differential-drive movement
 - Autonomous forward movement
+- Onboard camera
+- ROS 2 camera integration
+- OpenCV-based leak detection
+- Blue-region water leak simulation
 - Odometry-based distance tracking
-- Vision-based water leak detection
 - Multiple leak detection
-- Automatic inspection stop
+- Automatic rover stopping
+- Automatic inspection delay
 - Leak location estimation
+- Expected vs detected location comparison
 - Position error calculation
 - Mission completion detection
 
 ---
 
-## 💧 Leak Detection
+## 🏗️ System Architecture
 
-The rover uses a camera to detect blue-colored regions representing simulated water leakage.
+The JalRakshak system integrates the Gazebo pipeline environment, ROS 2 communication, autonomous rover control, camera-based vision processing, OpenCV leak detection, and odometry-based location tracking.
 
-OpenCV performs:
-
-1. Image acquisition from ROS 2 camera topic
-2. BGR to HSV conversion
-3. Blue color filtering
-4. Noise removal
-5. Contour detection
-6. Largest blue region detection
-7. Leak confirmation
-
-A leak is detected when the identified blue region exceeds the defined area threshold.
+![JalRakshak System Architecture](docs/jalrakshak_architecture.png)
 
 ---
 
-## 📍 Simulated Leak Locations
+## 💧 Leak Detection System
 
-The current Gazebo environment contains five simulated leak points:
+The rover-mounted camera continuously publishes images through ROS 2.
 
-| Leak | Location |
-|------|----------|
-| Leak 1 | 10 m |
-| Leak 2 | 20 m |
-| Leak 3 | 30 m |
-| Leak 4 | 40 m |
-| Leak 5 | 50 m |
+The vision processing system receives the camera images and uses OpenCV to identify blue-colored regions representing simulated water leakage.
 
-The rover compares its odometry-based detected position with the expected leak position and calculates the position error.
-
----
-
-## 🔄 System Workflow
+### Detection Pipeline
 
 ```text
-Start
-  ↓
-Gazebo Pipeline Environment
-  ↓
-Spawn JalRakshak Rover
-  ↓
-5 Second Startup Delay
-  ↓
-Autonomous Movement
-  ↓
-Camera Image Processing
-  ↓
-Blue Region Detection
-  ↓
-Water Leak Detected?
-  ├── No → Continue Moving
-  │
-  └── Yes
-       ↓
-   Stop Rover
-       ↓
-   Calculate Leak Location
-       ↓
-   Calculate Position Error
-       ↓
-   5 Second Inspection
-       ↓
-   Continue Mission
-       ↓
-   Next Leak
-       ↓
-   All Leaks Inspected
-       ↓
-   Mission Complete
+Camera Image
+     ↓
+ROS 2 Image Topic
+     ↓
+CvBridge
+     ↓
+OpenCV Image Processing
+     ↓
+BGR → HSV Conversion
+     ↓
+Blue Color Filtering
+     ↓
+Noise Removal
+     ↓
+Contour Detection
+     ↓
+Largest Blue Region
+     ↓
+Area Threshold
+     ↓
+Water Leak Confirmed

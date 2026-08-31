@@ -1,0 +1,427 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+
+  <world name="jalrakshak_pipe_world">
+
+    <!-- ================= LIGHT ================= -->
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+
+    <!-- ================= GROUND ================= -->
+
+    <model name="ground">
+
+      <static>true</static>
+
+      <link name="ground_link">
+
+        <collision name="ground_collision">
+
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>500 20</size>
+            </plane>
+          </geometry>
+
+        </collision>
+
+        <visual name="ground_visual">
+
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>500 20</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- PIPE LEFT WALL                                    -->
+    <!-- ================================================= -->
+
+    <model name="pipe_left_wall">
+
+      <static>true</static>
+
+      <link name="left_wall">
+
+        <collision name="collision">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+        </collision>
+
+        <visual name="visual">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>0 0.40 0.40 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- PIPE RIGHT WALL                                   -->
+    <!-- ================================================= -->
+
+    <model name="pipe_right_wall">
+
+      <static>true</static>
+
+      <link name="right_wall">
+
+        <collision name="collision">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+        </collision>
+
+        <visual name="visual">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>0 -0.40 0.40 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- PIPE TOP LEFT                                    -->
+    <!-- ================================================= -->
+
+    <model name="pipe_top_left">
+
+      <static>true</static>
+
+      <link name="top_left">
+
+        <visual name="visual">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>0 0.40 1.0 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- PIPE TOP RIGHT                                   -->
+    <!-- ================================================= -->
+
+    <model name="pipe_top_right">
+
+      <static>true</static>
+
+      <link name="top_right">
+
+        <visual name="visual">
+
+          <geometry>
+            <box>
+              <size>100 0.08 0.8</size>
+            </box>
+          </geometry>
+
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>0 -0.40 1.0 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- WATER LEAK 1 - 10 METERS                         -->
+    <!-- ================================================= -->
+
+    <model name="water_leak_10m">
+
+      <static>true</static>
+
+      <link name="leak_link">
+
+        <visual name="water">
+
+          <geometry>
+
+            <cylinder>
+              <radius>0.30</radius>
+              <length>0.005</length>
+            </cylinder>
+
+          </geometry>
+
+          <material>
+
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>10 0 0.01 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- WATER LEAK 2 - 20 METERS                         -->
+    <!-- ================================================= -->
+
+    <model name="water_leak_20m">
+
+      <static>true</static>
+
+      <link name="leak_link">
+
+        <visual name="water">
+
+          <geometry>
+
+            <cylinder>
+              <radius>0.30</radius>
+              <length>0.005</length>
+            </cylinder>
+
+          </geometry>
+
+          <material>
+
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>20 0 0.01 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- WATER LEAK 3 - 30 METERS                         -->
+    <!-- ================================================= -->
+
+    <model name="water_leak_30m">
+
+      <static>true</static>
+
+      <link name="leak_link">
+
+        <visual name="water">
+
+          <geometry>
+
+            <cylinder>
+              <radius>0.30</radius>
+              <length>0.005</length>
+            </cylinder>
+
+          </geometry>
+
+          <material>
+
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>30 0 0.01 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- WATER LEAK 4 - 40 METERS                         -->
+    <!-- ================================================= -->
+
+    <model name="water_leak_40m">
+
+      <static>true</static>
+
+      <link name="leak_link">
+
+        <visual name="water">
+
+          <geometry>
+
+            <cylinder>
+              <radius>0.30</radius>
+              <length>0.005</length>
+            </cylinder>
+
+          </geometry>
+
+          <material>
+
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>40 0 0.01 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- WATER LEAK 5 - 50 METERS                         -->
+    <!-- ================================================= -->
+
+    <model name="water_leak_50m">
+
+      <static>true</static>
+
+      <link name="leak_link">
+
+        <visual name="water">
+
+          <geometry>
+
+            <cylinder>
+              <radius>0.30</radius>
+              <length>0.005</length>
+            </cylinder>
+
+          </geometry>
+
+          <material>
+
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+      <pose>50 0 0.01 0 0 0</pose>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- PHYSICS                                          -->
+    <!-- ================================================= -->
+
+    <physics type="ode">
+
+      <max_step_size>
+        0.001
+      </max_step_size>
+
+      <real_time_update_rate>
+        1000
+      </real_time_update_rate>
+
+    </physics>
+
+
+    <!-- ================= GRAVITY ================= -->
+
+    <gravity>
+      0 0 -9.81
+    </gravity>
+
+
+    <!-- ================= CAMERA ================= -->
+
+    <gui>
+
+      <camera name="user_camera">
+
+        <pose>
+          0 -6 4 0.45 0 0
+        </pose>
+
+      </camera>
+
+    </gui>
+
+  </world>
+
+</sdf>

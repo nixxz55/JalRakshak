@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+
+  <name>jalrakshak_description</name>
+
+  <version>1.0.0</version>
+
+  <description>
+    JalRakshak pipeline inspection rover description
+  </description>
+
+  <maintainer email="user@example.com">
+    jalrakshak
+  </maintainer>
+
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>gazebo_ros</exec_depend>
+
+</package>

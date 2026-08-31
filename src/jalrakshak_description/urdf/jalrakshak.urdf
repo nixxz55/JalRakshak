@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+
+<robot name="jalrakshak">
+
+  <!-- ==================== BASE ==================== -->
+
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+
+    <visual>
+      <geometry>
+        <box size="0.70 0.50 0.20"/>
+      </geometry>
+      <material name="body_material">
+        <color rgba="0.0 0.3 0.8 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.70 0.50 0.20"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="4.0"/>
+      <inertia
+        ixx="0.10"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.10"
+        iyz="0.0"
+        izz="0.15"/>
+    </inertial>
+
+  </link>
+
+
+  <!-- ==================== LEFT FRONT WHEEL ==================== -->
+
+  <link name="left_front_wheel">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+      <material name="wheel_material">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.6"/>
+      <inertia
+        ixx="0.002"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.002"
+        iyz="0.0"
+        izz="0.002"/>
+    </inertial>
+
+  </link>
+
+  <joint name="left_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin xyz="0.23 0.28 -0.12" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== LEFT REAR WHEEL ==================== -->
+
+  <link name="left_rear_wheel">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+      <material name="wheel_material2">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.6"/>
+      <inertia
+        ixx="0.002"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.002"
+        iyz="0.0"
+        izz="0.002"/>
+    </inertial>
+
+  </link>
+
+  <joint name="left_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_rear_wheel"/>
+    <origin xyz="-0.23 0.28 -0.12" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== RIGHT FRONT WHEEL ==================== -->
+
+  <link name="right_front_wheel">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+      <material name="wheel_material3">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.6"/>
+      <inertia
+        ixx="0.002"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.002"
+        iyz="0.0"
+        izz="0.002"/>
+    </inertial>
+
+  </link>
+
+  <joint name="right_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin xyz="0.23 -0.28 -0.12" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== RIGHT REAR WHEEL ==================== -->
+
+  <link name="right_rear_wheel">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+      <material name="wheel_material4">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.11" length="0.06"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.6"/>
+      <inertia
+        ixx="0.002"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.002"
+        iyz="0.0"
+        izz="0.002"/>
+    </inertial>
+
+  </link>
+
+  <joint name="right_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_rear_wheel"/>
+    <origin xyz="-0.23 -0.28 -0.12" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== CAMERA BODY ==================== -->
+
+  <link name="camera_link">
+
+    <visual>
+      <geometry>
+        <box size="0.08 0.08 0.08"/>
+      </geometry>
+      <material name="camera_material">
+        <color rgba="0.02 0.02 0.02 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.08 0.08 0.08"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.1"/>
+      <inertia
+        ixx="0.001"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.001"
+        iyz="0.0"
+        izz="0.001"/>
+    </inertial>
+
+  </link>
+
+
+  <!-- ==================== CAMERA JOINT ==================== -->
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.30 0 0.12" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ==================== DIFF DRIVE ==================== -->
+
+  <gazebo>
+
+    <plugin
+      name="diff_drive"
+      filename="libgazebo_ros_diff_drive.so">
+
+      <left_joint>left_front_wheel_joint</left_joint>
+      <right_joint>right_front_wheel_joint</right_joint>
+
+      <wheel_separation>0.56</wheel_separation>
+      <wheel_diameter>0.22</wheel_diameter>
+
+      <max_wheel_torque>20</max_wheel_torque>
+      <max_wheel_acceleration>2.0</max_wheel_acceleration>
+
+      <command_topic>cmd_vel</command_topic>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+
+    </plugin>
+
+  </gazebo>
+
+
+  <!-- ==================== REAR WHEEL FRICTION ==================== -->
+
+  <gazebo reference="left_rear_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+
+  <gazebo reference="right_rear_wheel">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+
+
+  <!-- ==================== CAMERA SENSOR ==================== -->
+
+  <gazebo reference="camera_link">
+
+    <sensor
+      name="jalrakshak_camera_sensor"
+      type="camera">
+
+      <always_on>true</always_on>
+      <update_rate>30.0</update_rate>
+      <visualize>true</visualize>
+
+      <camera name="jalrakshak_camera">
+
+        <horizontal_fov>1.3962634</horizontal_fov>
+
+        <image>
+          <width>800</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.02</near>
+          <far>100</far>
+        </clip>
+
+      </camera>
+
+      <plugin
+        name="jalrakshak_camera_plugin"
+        filename="libgazebo_ros_camera.so">
+
+        <ros>
+          <namespace>/jalrakshak_camera</namespace>
+        </ros>
+
+        <camera_name>camera</camera_name>
+        <frame_name>camera_link</frame_name>
+
+      </plugin>
+
+    </sensor>
+
+  </gazebo>
+
+</robot>
